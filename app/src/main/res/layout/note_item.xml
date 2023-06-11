@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="170dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="8dp"
+    android:background="@drawable/note"
+    android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="310dp"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        android:layout_marginRight="-20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/noteName"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Journal Name"
+            android:textColor="@color/black"
+            android:textSize="30dp"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/noteText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="This is part of a journal I'm testing how long it could be and what text size will be."
+            android:textSize="18dp"
+            android:textColor="@color/black"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/bookmark"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="2dp"/>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="80dp"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:id="@+id/audio"/>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

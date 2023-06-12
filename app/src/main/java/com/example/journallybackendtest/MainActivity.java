@@ -5,12 +5,15 @@ import static android.content.ContentValues.TAG;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.Layout;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -22,7 +25,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -47,7 +54,7 @@ public class MainActivity extends JournallyActivity {
     private AudioEntryPlayback entryPlayback;
     private ImageView ivMenu;
     private DrawerLayout drawerLayout;
-    private android.widget.Toolbar toolbar;
+    private Toolbar toolbar;
     private NavigationView nav;
 
 
@@ -57,14 +64,13 @@ public class MainActivity extends JournallyActivity {
         setContentView(R.layout.activity_main);
         context = getApplicationContext();
         gridLayoutManager = new GridLayoutManager(this, 3);
-        JController.setDatabase();
+        //JController.setDatabase();
         setElements();
         setPermissions();
         tag = this.getClass().getName();
-        //setSupportActionBar(toolbar);
 
         setContentView(R.layout.activity_main);
-        updateContent();
+        //updateContent();
     }
 
 
@@ -80,26 +86,76 @@ public class MainActivity extends JournallyActivity {
     private void setElements() {
         rvContent = (RecyclerView) findViewById(R.id.bookshelf);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
-        //toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         nav = (NavigationView) findViewById(R.id.nav);
-        ivMenu = (ImageView) findViewById(R.id.iv_menu);
+        //ivMenu = (ImageView) findViewById(R.id.iv_menu);
         layout = (LinearLayout) findViewById(R.id.note_list);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        //setSupportActionBar(toolbar);
-
-        ivMenu.setOnClickListener(new View.OnClickListener() {
+        //toolbar.inflateMenu(R.menu.menu_main);
+/*
+        toolbar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 drawerLayout.openDrawer(Gravity.LEFT);
             }
         });
-
+*/
         NavigationViewHelper.enableNavigation(context,nav);
+        nav.bringToFront();
+
+        nav.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                menuItem.setChecked(true);
+                drawerLayout.closeDrawers();
+
+                Intent intent = null;
+
+                int id = menuItem.getItemId();
+
+                if(id == R.id.addNote) {
+                    intent = new Intent(context, ContentTaking.class);
+
+                } else if (id == R.id.note) {
+                    intent= new Intent(getApplicationContext(), Content_view.class);
+
+                }
+
+                context.startActivity(intent);
+
+                return true;
+            }
+        });
+    }
 
         //txtUserName = findViewById(R.id.txt_user_name);
         //layout = findViewById(R.id.audio_layout);
+
+
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_main, menu);
+        return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.iv_menu:
+                Intent intent = new Intent(getApplicationContext(), Content_view.class);
+                startActivity(intent);
+                break;
+
+            default:
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 
 

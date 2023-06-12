@@ -40,7 +40,7 @@ public class Content_view extends JournallyActivity {
         JController.setCurrentJournal(user.getJournal("0"));
         JController.setCurrentEntry(JController.getCurrentJournal().getEntry("0"));
         //txtUserName.setText(user.getName());
-        List<Content> ourContent = JController.getCurrentEntry().getListContent();
+        //List<Content> ourContent = JController.getCurrentEntry().getListContent();
 
         clearAudioView();
         if (JController.getCurrentEntry().getAudioId() == null) {

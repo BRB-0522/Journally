@@ -27,10 +27,6 @@ public class NavigationViewHelper {
                     Intent intent=new Intent(context, JournalView.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                     context.startActivity(intent);
-                }else if(item.getItemId()==R.id.bookmark) {
-                    Intent intent = new Intent(context, Bookmark.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                    context.startActivity(intent);
                 }
                 return false;
             }

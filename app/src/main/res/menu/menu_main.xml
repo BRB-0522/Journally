@@ -14,8 +14,4 @@
         android:id="@+id/note"
         android:title="Notes"
         app:showAsAction="always"/>
-    <item
-        android:id="@+id/bookmark"
-        android:title="Bookmarks"
-        app:showAsAction="always"/>
 </menu>

@@ -30,26 +30,5 @@
             android:textColor="@color/black"/>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <View
-            android:id="@+id/bookmark"
-            android:layout_width="30dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="2dp"/>
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="80dp"/>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:id="@+id/audio"/>
-
-    </LinearLayout>
-
-
 
 </LinearLayout>

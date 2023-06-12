@@ -15,7 +15,7 @@ public class Entry {
     private String title;
     private String creationDate;
     // List of Content objects
-    private List<Content> listContent;
+    private String content;
     // Id of audio file
     private String audioId = null;
     //Boolean to check bookmarked or not
@@ -38,7 +38,6 @@ public class Entry {
         this.id = id;
         this.title = title;
         this.creationDate = creationDate;
-        listContent = new ArrayList<>();
     }
 
     // Getters and setters
@@ -67,17 +66,7 @@ public class Entry {
         this.creationDate = creationDate;
     }
 
-    public List<Content> getListContent() {
-        return listContent;
-    }
 
-    public void setListContent(List<Content> listContent) {
-        this.listContent = listContent;
-    }
-
-    public void insertContent(Content content, int index) {
-        listContent.add(index, content);
-    }
 
     public String getAudioId() {return audioId;}
 

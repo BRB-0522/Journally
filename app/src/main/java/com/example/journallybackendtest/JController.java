@@ -224,7 +224,7 @@ public final class JController {
         // Create and return
         Entry newEntry = new Entry(id, title, creationDate);
         // Create and insert default content
-        newEntry.insertContent(new Content(""), 0);
+        //newEntry.insertContent(new Content(""), 0);
         return newEntry;
     }
 
